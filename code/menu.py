@@ -2,7 +2,7 @@ import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.Const import WIN_WIDTH, WIN_HEIGHT
+from code.Const import WIN_WIDTH, WIN_HEIGHT, COLOR_ORANGE, MENU_OPTIONS, COLOR_WHITE
 
 
 class Menu:
@@ -17,7 +17,11 @@ class Menu:
 
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
-            self.menu_text(50, "Basketball Game", (255, 128, 0), ((WIN_WIDTH / 2), 70))
+            self.menu_text(50, "Basketball Game", COLOR_ORANGE, ((WIN_WIDTH / 2), 70))
+
+            for i in range(len(MENU_OPTIONS)):
+                self.menu_text(50, MENU_OPTIONS[i], COLOR_WHITE, ((WIN_WIDTH / 2), (450 + (i * 50))))
+
             pygame.display.flip()
 
             for event in pygame.event.get():
