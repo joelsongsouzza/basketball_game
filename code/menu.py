@@ -37,6 +37,9 @@ class Menu:
                         menu_option = menu_option + 1 if menu_option != 2 else 0
                     if event.key == pygame.K_UP:
                         menu_option = menu_option - 1 if menu_option != 0 else 2
+                    if event.key == pygame.K_RETURN:
+                        return MENU_OPTIONS[menu_option]
+
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
