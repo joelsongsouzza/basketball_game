@@ -1,6 +1,6 @@
 import pygame
 
-from code.Const import WIN_WIDTH, WIN_HEIGHT, MENU_OPTIONS
+from code.const import WIN_WIDTH, WIN_HEIGHT, MENU_OPTIONS
 from code.level import Level
 from code.menu import Menu
 

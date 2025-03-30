@@ -6,6 +6,7 @@ from pygame.font import Font
 
 from code.entity import Entity
 from code.entity_factory import EntityFactory
+from code.entity_mediator import EntityMediator
 
 
 class Level:
@@ -15,6 +16,7 @@ class Level:
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('forest_background'))
         self.entity_list.append(EntityFactory.get_entity('dude'))
+        self.entity_list.append(EntityFactory.get_entity('ball'))
 
     def run(self, ):
         pygame.mixer_music.load('./assets/menu_background_music.wav')
@@ -31,6 +33,7 @@ class Level:
                     quit()
 
             pygame.display.flip()
+            EntityMediator.verify_collision(self.entity_list)
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
         text_font: Font = pygame.font.SysFont(name='Lucida Sans Typewriter', size=text_size)
