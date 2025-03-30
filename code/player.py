@@ -1,6 +1,7 @@
 from abc import ABC
 
 import pygame
+from pygame import K_SPACE
 
 from code.ball import Ball
 from code.entity import Entity
@@ -9,19 +10,20 @@ from code.entity import Entity
 class Player(Entity, ABC):
     def __init__(self, name: str, position: tuple, ball: Ball):
         super().__init__(name, position)
+        self.position = position
         self.direction = 1
         self.speed = 1
         self.max_movement = 150
         self.start_y = position[1]
         self.ball = ball
+        self.is_shooting = False
 
-    @staticmethod
     def shoot(self):
-        while True:
-            for event in pygame.event.get():
-                if event.type == pygame.K_x:
-                    pass
-        # self.ball.shoot()
+        pressed_key = pygame.key.get_pressed()
+        if pressed_key[pygame.K_x]:
+            if not self.is_shooting:
+                self.is_shooting = True
+                return Ball('ball', (self.rect.centerx, self.rect.centery), 5, -10)
 
     def move(self):
         movement = self.speed * self.direction
