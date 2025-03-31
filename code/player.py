@@ -13,15 +13,19 @@ class Player(Entity, ABC):
         self.position = position
         self.is_shooting = False
         self.power = 1
+        self.shoots_left = 15
+        self.points = 0
 
     def shoot(self):
         if not self.is_shooting:
             pressed = pygame.key.get_pressed()
             if pressed[pygame.K_x]:
-                self.power += 0.1
+                if self.power < 7:
+                    self.power += 0.1
             elif self.power > 1:
-                power_stored = min(8, self.power)
+                power_stored = min(7, self.power)
                 self.power = 1
+                self.shoots_left -= 1
                 self.is_shooting = True
                 self.surf = pygame.image.load('./assets/' + 'dude_without_ball' + '.png').convert_alpha()
                 return Ball('ball', (self.rect.centerx, self.rect.top), power_stored)

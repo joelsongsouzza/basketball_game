@@ -14,4 +14,4 @@ class EntityFactory:
             case 'dude':
                 return Player('dude', (25, 570))
             case 'trash_bin':
-                return TrashBin('trash_bin', (500, 650))
+                return TrashBin('trash_bin', (400, 650))

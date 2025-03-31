@@ -23,6 +23,7 @@ class Level:
         pygame.mixer_music.load('./assets/menu_background_music.wav')
         pygame.mixer_music.play(-1)
         clock = pygame.time.Clock()
+        player =  next(filter(lambda e: isinstance(e, Player), self.entity_list))
         while True:
             clock.tick(60)
             for ent in self.entity_list:
@@ -38,11 +39,15 @@ class Level:
                     pygame.quit()
                     quit()
 
+            self.level_text(30, f'Pontuação: {player.points}            Tentativas: {player.shoots_left}', (255, 255, 255), (25, 25))
+            self.level_text(30, f'Power:', (255, 255, 255), (25, 80))
+            self.level_text(15, f'{("█" * max(0, int(player.power * 10) - 10))}', (237, 28, 36), (130, 90))
+
             pygame.display.flip()
             EntityMediator.verify_collision(self.entity_list)
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
-        text_font: Font = pygame.font.SysFont(name='Lucida Sans Typewriter', size=text_size)
-        text_surf: Surface = text_font.render(text, antialias=True, color=text_color).convert_alpha()
+        text_font: Font = pygame.font.SysFont(name="Arial", size=text_size)
+        text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(left=text_pos[0], top=text_pos[1])
         self.window.blit(source=text_surf, dest=text_rect)

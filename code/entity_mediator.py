@@ -28,10 +28,11 @@ class EntityMediator:
             for j in range(len(entity_list)):
                 entity2 = entity_list[j]
                 if isinstance(entity, Ball) and isinstance(entity2, TrashBin) and entity.already_collided == False:
-                    EntityMediator.__check_ball_with_bin_collision(entity, entity2, entity_list)
+                    player = next((e for e in entity_list if isinstance(e, Player)), None)
+                    EntityMediator.__check_ball_with_bin_collision(entity, entity2, player)
 
     @staticmethod
-    def __check_ball_with_bin_collision(ball: Ball, trashbin: TrashBin, entities: list[Entity]):
+    def __check_ball_with_bin_collision(ball: Ball, trashbin: TrashBin, player: Player):
         ball_bottom = ball.rect.bottom
         ball_top = ball.rect.top
         ball_left = ball.rect.left
@@ -50,8 +51,8 @@ class EntityMediator:
 
         collided_top_center = (
                 ball_bottom >= trashbin_top > ball_top and
-                ball_right > trashbin_left + 35 and
-                ball_left < trashbin_right - 35
+                ball_right > trashbin_left + 30 and
+                ball_left < trashbin_right - 30
         )
 
         collided_left = (
@@ -66,12 +67,12 @@ class EntityMediator:
             ball.already_collided = True
             ball.scored = True
 
-            new_x = random.randint(300, 700)
+            new_x = random.randint(300, 580)
             new_y = 650
 
             trashbin.rect.centerx =  new_x
             trashbin.rect.top = new_y
-            print(f'x = {trashbin.rect.centerx} - y = {trashbin.rect.centery}')
+            player.points += 1
         elif collided_top:
             ball.y_speed *= -1
             ball.already_collided = True
