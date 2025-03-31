@@ -8,14 +8,13 @@ from code.entity import Entity
 
 
 class Player(Entity, ABC):
-    def __init__(self, name: str, position: tuple, ball: Ball):
+    def __init__(self, name: str, position: tuple):
         super().__init__(name, position)
         self.position = position
         self.direction = 1
         self.speed = 1
         self.max_movement = 150
         self.start_y = position[1]
-        self.ball = ball
         self.is_shooting = False
 
     def shoot(self):
@@ -23,7 +22,8 @@ class Player(Entity, ABC):
         if pressed_key[pygame.K_x]:
             if not self.is_shooting:
                 self.is_shooting = True
-                return Ball('ball', (self.rect.centerx, self.rect.centery), 5, -10)
+                self.surf = pygame.image.load('./assets/' + 'dude_without_ball' + '.png').convert_alpha()
+                return Ball('ball', (self.rect.centerx, self.rect.top), 5, -10)
 
     def move(self):
         movement = self.speed * self.direction

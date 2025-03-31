@@ -17,6 +17,7 @@ class Level:
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('forest_background'))
         self.entity_list.append(EntityFactory.get_entity('dude'))
+        self.entity_list.append(EntityFactory.get_entity('trash_bin'))
 
     def run(self, ):
         pygame.mixer_music.load('./assets/menu_background_music.wav')
