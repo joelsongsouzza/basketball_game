@@ -66,11 +66,11 @@ class EntityMediator:
             ball.already_collided = True
             ball.scored = True
 
-            new_x = random.randint(500, 600)
-            new_y = random.randint(500, 700)
+            new_x = random.randint(300, 700)
+            new_y = 650
 
             trashbin.rect.centerx =  new_x
-            trashbin.rect.centery = new_y
+            trashbin.rect.top = new_y
             print(f'x = {trashbin.rect.centerx} - y = {trashbin.rect.centery}')
         elif collided_top:
             ball.y_speed *= -1

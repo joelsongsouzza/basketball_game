@@ -12,8 +12,6 @@ class EntityFactory:
             case 'classroom_background':
                 return [Background('classroom_background', (0, 0))]
             case 'dude':
-                return Player('dude', (25, WIN_HEIGHT / 2))
-            case 'ball':
-                return Ball('ball', (110, WIN_HEIGHT / 2))
+                return Player('dude', (25, 570))
             case 'trash_bin':
-                return TrashBin('trash_bin', (500, 500))
+                return TrashBin('trash_bin', (500, 650))

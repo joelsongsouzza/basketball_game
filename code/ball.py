@@ -6,11 +6,11 @@ from code.entity import Entity
 
 
 class Ball(Entity, ABC):
-    def __init__(self, name: str, position: tuple):
+    def __init__(self, name: str, position: tuple, power: float):
         super().__init__(name, position)
         self.name = name
         self.position = position
-        self.x_speed = 5
+        self.x_speed = power
         self.y_speed = -10
         self.already_collided = False
         self.scored = False
