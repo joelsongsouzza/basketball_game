@@ -39,9 +39,9 @@ class Level:
                     pygame.quit()
                     quit()
 
-            self.level_text(30, f'Pontuação: {player.points}            Tentativas: {player.shoots_left}', (255, 255, 255), (25, 25))
-            self.level_text(30, f'Power:', (255, 255, 255), (25, 80))
-            self.level_text(15, f'{("█" * max(0, int(player.power * 10) - 10))}', (237, 28, 36), (130, 90))
+            self.level_text(30, f'Pontuação: {player.points}        Tentativas: {player.shoots_left}', (255, 255, 255), (140, 25))
+            self.level_text(30, f'Power:', (255, 255, 255), (140, 80))
+            self.level_text(10, f'{("█" * max(0, int(player.power * 10) - 10))}', (237, 28, 36), (240, 93))
 
             pygame.display.flip()
             EntityMediator.verify_collision(self.entity_list)

@@ -10,8 +10,8 @@ class EntityFactory:
     def get_entity(entity_name: str, position=(0,0)):
         match entity_name:
             case 'classroom_background':
-                return [Background('classroom_background', (0, 0))]
+                return [Background('classroom_background_2', (0, 0))]
             case 'dude':
-                return Player('dude', (25, 570))
+                return Player('dude', (40, 630))
             case 'trash_bin':
                 return TrashBin('trash_bin', (400, 650))
