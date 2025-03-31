@@ -12,8 +12,8 @@ class Player(Entity, ABC):
         super().__init__(name, position)
         self.position = position
         self.direction = 1
-        self.speed = 1
-        self.max_movement = 150
+        self.speed = 1.8
+        self.max_movement = 300
         self.start_y = position[1]
         self.is_shooting = False
 
@@ -23,7 +23,7 @@ class Player(Entity, ABC):
             if not self.is_shooting:
                 self.is_shooting = True
                 self.surf = pygame.image.load('./assets/' + 'dude_without_ball' + '.png').convert_alpha()
-                return Ball('ball', (self.rect.centerx, self.rect.top), 5, -10)
+                return Ball('ball', (self.rect.centerx, self.rect.top))
 
     def move(self):
         movement = self.speed * self.direction

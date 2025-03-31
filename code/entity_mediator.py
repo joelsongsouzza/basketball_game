@@ -1,3 +1,5 @@
+import random
+
 import pygame
 
 from code.ball import Ball
@@ -63,6 +65,13 @@ class EntityMediator:
             ball.y_speed = 0
             ball.already_collided = True
             ball.scored = True
+
+            new_x = random.randint(500, 600)
+            new_y = random.randint(500, 700)
+
+            trashbin.rect.centerx =  new_x
+            trashbin.rect.centery = new_y
+            print(f'x = {trashbin.rect.centerx} - y = {trashbin.rect.centery}')
         elif collided_top:
             ball.y_speed *= -1
             ball.already_collided = True

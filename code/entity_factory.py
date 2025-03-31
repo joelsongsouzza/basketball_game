@@ -9,11 +9,11 @@ class EntityFactory:
     @staticmethod
     def get_entity(entity_name: str, position=(0,0)):
         match entity_name:
-            case 'forest_background':
-                return [Background('forest_background', (0, 0))]
+            case 'classroom_background':
+                return [Background('classroom_background', (0, 0))]
             case 'dude':
                 return Player('dude', (25, WIN_HEIGHT / 2))
             case 'ball':
-                return Ball('ball', (110, WIN_HEIGHT / 2), 5, -10)
+                return Ball('ball', (110, WIN_HEIGHT / 2))
             case 'trash_bin':
-                return TrashBin('trash_bin', (500, 600))
+                return TrashBin('trash_bin', (500, 500))

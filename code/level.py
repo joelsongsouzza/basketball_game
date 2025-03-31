@@ -15,7 +15,7 @@ class Level:
         self.window = window
         self.name = name
         self.entity_list: list[Entity] = []
-        self.entity_list.extend(EntityFactory.get_entity('forest_background'))
+        self.entity_list.extend(EntityFactory.get_entity('classroom_background'))
         self.entity_list.append(EntityFactory.get_entity('dude'))
         self.entity_list.append(EntityFactory.get_entity('trash_bin'))
 

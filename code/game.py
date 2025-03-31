@@ -16,7 +16,7 @@ class Game:
             selected_menu_item = menu.run()
 
             if selected_menu_item == MENU_OPTIONS[0]:
-                level = Level(self.window, 'forest_background')
+                level = Level(self.window, 'classroom_background')
                 level_return = level.run()
             elif selected_menu_item == MENU_OPTIONS[2]:
                 pygame.quit()
