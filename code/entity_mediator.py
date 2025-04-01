@@ -83,7 +83,7 @@ class EntityMediator:
             ball.already_collided = True
             ball.scored = True
 
-            new_x = random.randint(300, 580)
+            new_x = random.randint(300, 540)
             new_y = 650
 
             trashbin.rect.centerx =  new_x

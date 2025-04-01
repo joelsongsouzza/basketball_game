@@ -14,7 +14,7 @@ class Teacher(Entity, ABC):
         self.position = position
         self.is_going_to_look = False
         self.is_looking = False
-        pygame.time.set_timer(self.LOOK_EVENT, 4000)
+        pygame.time.set_timer(self.LOOK_EVENT, 5000)
 
     def move(self):
         pass

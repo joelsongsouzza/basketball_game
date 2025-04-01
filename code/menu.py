@@ -8,7 +8,7 @@ from code.const import WIN_WIDTH, WIN_HEIGHT, COLOR_ORANGE, MENU_OPTIONS, COLOR_
 class Menu:
     def __init__(self, window):
         self.window = window
-        self.surf = pygame.image.load('./assets/menu_background_bigger.png').convert_alpha()
+        self.surf = pygame.image.load('./assets/menu_background.png').convert_alpha()
         self.rect = self.surf.get_rect(left=0, top=0)
 
     def run(self, ):
@@ -18,13 +18,15 @@ class Menu:
 
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
-            self.menu_text(50, "Basketball Game", COLOR_ORANGE, ((WIN_WIDTH / 2), 70))
+            self.menu_text(50, "Joselito the Game", COLOR_ORANGE, ((WIN_WIDTH / 2), 140))
+            self.menu_text(36, "Acerte o máximo número de bolinhas na cesta de lixo", COLOR_ORANGE, ((WIN_WIDTH / 2), 220))
+            self.menu_text(36, "sem que o professor te pegue!", COLOR_ORANGE, ((WIN_WIDTH / 2), 240))
 
             for i in range(len(MENU_OPTIONS)):
                 if i == menu_option:
-                    self.menu_text(50, MENU_OPTIONS[i], COLOR_ORANGE, ((WIN_WIDTH / 2), (450 + (i * 50))))
+                    self.menu_text(50, MENU_OPTIONS[i], COLOR_ORANGE, ((WIN_WIDTH / 2), (500 + (i * 50))))
                 else:
-                    self.menu_text(50, MENU_OPTIONS[i], COLOR_WHITE, ((WIN_WIDTH / 2), (450 + (i * 50))))
+                    self.menu_text(50, MENU_OPTIONS[i], COLOR_WHITE, ((WIN_WIDTH / 2), (500 + (i * 50))))
 
             pygame.display.flip()
 
@@ -34,9 +36,9 @@ class Menu:
                     quit()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_DOWN:
-                        menu_option = menu_option + 1 if menu_option != 2 else 0
+                        menu_option = menu_option + 1 if menu_option != 1 else 0
                     if event.key == pygame.K_UP:
-                        menu_option = menu_option - 1 if menu_option != 0 else 2
+                        menu_option = menu_option - 1 if menu_option != 0 else 1
                     if event.key == pygame.K_RETURN:
                         return MENU_OPTIONS[menu_option]
 

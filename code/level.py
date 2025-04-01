@@ -4,6 +4,7 @@ import pygame.display
 from pygame import Surface, Rect
 from pygame.font import Font
 
+from code.const import COLOR_ORANGE, WIN_WIDTH
 from code.entity import Entity
 from code.entity_factory import EntityFactory
 from code.entity_mediator import EntityMediator
@@ -44,6 +45,7 @@ class Level:
                     teacher = next((e for e in self.entity_list if isinstance(e, Teacher)), None)
                     teacher.update_is_looking()
 
+            self.level_text(24, 'Segure X para arremessar a bola!', (255, 0 ,0), (250, 330))
             self.level_text(30, f'Pontuação: {player.points}        Tentativas: {player.shoots_left}', (255, 255, 255), (140, 25))
             self.level_text(30, f'Power:', (255, 255, 255), (140, 80))
             self.level_text(10, f'{("█" * max(0, int(player.power * 10) - 10))}', (237, 28, 36), (240, 93))
