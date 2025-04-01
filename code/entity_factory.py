@@ -2,6 +2,7 @@ from code.const import WIN_HEIGHT, WIN_WIDTH
 from code.background import Background
 from code.ball import Ball
 from code.player import Player
+from code.teacher import Teacher
 from code.trash_bin import TrashBin
 
 
@@ -15,3 +16,5 @@ class EntityFactory:
                 return Player('dude', (40, 630))
             case 'trash_bin':
                 return TrashBin('trash_bin', (400, 650))
+            case 'teacher':
+                return Teacher('teacher_sitting', (350, 150))

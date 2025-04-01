@@ -5,7 +5,9 @@ import pygame
 from code.ball import Ball
 from code.const import WIN_HEIGHT, WIN_WIDTH
 from code.entity import Entity
+from code.level_finish import LevelFinish
 from code.player import Player
+from code.teacher import Teacher
 from code.trash_bin import TrashBin
 
 
@@ -30,6 +32,20 @@ class EntityMediator:
                 if isinstance(entity, Ball) and isinstance(entity2, TrashBin) and entity.already_collided == False:
                     player = next((e for e in entity_list if isinstance(e, Player)), None)
                     EntityMediator.__check_ball_with_bin_collision(entity, entity2, player)
+
+    @staticmethod
+    def verify_teacher_is_looking(entity_list: list[Entity], window):
+        player = next((e for e in entity_list if isinstance(e, Player)), None)
+        teacher = next((e for e in entity_list if isinstance(e, Teacher)), None)
+
+        if player.is_shooting and teacher.is_looking:
+            LevelFinish(window, 'classroom_background', 'O professor te viu!', player.points).run()
+
+    @staticmethod
+    def verify_attempts_are_over(entity_list: list[Entity], window):
+        player = next((e for e in entity_list if isinstance(e, Player)), None)
+        if player.shoots_left == 0 and not player.is_shooting:
+            LevelFinish(window, 'classroom_background', 'Suas bolinhas acabaram', player.points).run()
 
     @staticmethod
     def __check_ball_with_bin_collision(ball: Ball, trashbin: TrashBin, player: Player):

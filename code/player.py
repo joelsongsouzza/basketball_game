@@ -4,6 +4,7 @@ import pygame
 
 from code.ball import Ball
 from code.entity import Entity
+from code.teacher import Teacher
 
 
 class Player(Entity, ABC):

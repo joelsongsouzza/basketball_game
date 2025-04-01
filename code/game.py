@@ -2,6 +2,7 @@ import pygame
 
 from code.const import WIN_WIDTH, WIN_HEIGHT, MENU_OPTIONS
 from code.level import Level
+from code.level_finish import LevelFinish
 from code.menu import Menu
 
 
@@ -16,8 +17,7 @@ class Game:
             selected_menu_item = menu.run()
 
             if selected_menu_item == MENU_OPTIONS[0]:
-                level = Level(self.window, 'classroom_background')
-                level_return = level.run()
+                Level(self.window, 'classroom_background').run()
             elif selected_menu_item == MENU_OPTIONS[2]:
                 pygame.quit()
                 quit()
